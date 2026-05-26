@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advara Holdings Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --moss:        #2F3D2E;
+    --moss-darker: #232D22;
+    --paper:       #F2EEE5;
+    --paper-warm:  #EAE3D2;
+    --paper-dk:    #DBD3BF;
+    --clay:        #8C5A3A;
+    --clay-soft:   #A87A55;
+    --rule:        rgba(242,238,229,0.18);
+    --rule-strong: rgba(242,238,229,0.4);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; overflow:hidden; }
+  body {
+    background:var(--moss);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* ═══════════════════ SPLIT LAYOUT ═══════════════════ */
+  .page {
+    height:100vh;
+    display:grid;
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  /* ═══════════════════ LEFT PANEL ═══════════════════ */
+  .left {
+    background:var(--moss);
+    padding:48px 64px 48px 80px;
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    position:relative;
+  }
+
+  /* Top bar */
+  .top {
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .top span {
+    font-size:10px;
+    font-weight:400;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--paper);
+    opacity:0.5;
+  }
+
+  /* Middle — wordmark and promise */
+  .middle {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:56px;
+  }
+
+  /* Wordmark — SVG for perfect proportion */
+  .wordmark {
+    max-width:420px;
+  }
+  .wordmark svg {
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .promise {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(20px, 2vw, 28px);
+    line-height:1.45;
+    color:var(--paper);
+    opacity:0.88;
+    max-width:480px;
+    letter-spacing:0.01em;
+  }
+
+  /* Bottom — footer rail */
+  .foot {
+    display:grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap:48px;
+    align-items:end;
+    padding-top:32px;
+    border-top:1px solid var(--rule);
+  }
+  .foot-block .label {
+    font-size:9px;
+    font-weight:400;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--paper);
+    opacity:0.45;
+    margin-bottom:14px;
+  }
+  .foot-block .desc {
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    font-size:12px;
+    line-height:1.75;
+    color:var(--paper);
+    opacity:0.7;
+    max-width:380px;
+  }
+  .foot-block .email {
+    font-family:'Cormorant Garamond', serif;
+    font-weight:400;
+    font-size:15px;
+    color:var(--paper);
+    opacity:0.92;
+    line-height:1.55;
+  }
+  .foot-block .email a {
+    color:var(--paper);
+    text-decoration:none;
+    border-bottom:1px solid var(--rule-strong);
+    padding-bottom:2px;
+    transition:border-color 0.3s ease;
+  }
+  .foot-block .email a:hover { border-bottom-color:var(--paper); }
+
+  /* ═══════════════════ RIGHT PANEL (image) ═══════════════════ */
+  .right {
+    position:relative;
+    overflow:hidden;
+    /* Atmospheric Canadian landscape — sky, distant horizon, land — purely tonal */
+    background:
+      /* Subtle warm glow at top right — distant light */
+      radial-gradient(ellipse 80% 50% at 70% 22%,
+        rgba(212, 168, 92, 0.18) 0%,
+        transparent 60%),
+      /* Sky layer fading downward */
+      linear-gradient(
+        to bottom,
+        #E8DFCC 0%,
+        #E2D7C0 28%,
+        #D8CAB0 50%,
+        /* Horizon transition */
+        #B8A687 55%,
+        /* Land layer */
+        #6E5F47 62%,
+        #4A3F31 78%,
+        #2E2820 100%
+      );
+  }
+
+  /* Distant horizon line — barely there */
+  .right::before {
+    content:'';
+    position:absolute;
+    left:0; right:0;
+    top:54.5%;
+    height:1px;
+    background:rgba(255,253,247,0.22);
+  }
+
+  /* Soft mist over the horizon */
+  .right::after {
+    content:'';
+    position:absolute;
+    left:0; right:0;
+    top:48%;
+    height:12%;
+    background:linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(242,238,229,0.10) 50%,
+      transparent 100%
+    );
+    pointer-events:none;
+  }
+
+  /* A subtle film grain via SVG for premium texture */
+  .grain {
+    position:absolute;
+    inset:0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+    mix-blend-mode:overlay;
+    opacity:0.4;
+    pointer-events:none;
+  }
+
+  /* Vertical caption rotated on the right edge of the image — premium editorial touch */
+  .image-caption {
+    position:absolute;
+    bottom:48px;
+    right:24px;
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'Inter', sans-serif;
+    font-weight:300;
+    font-size:9px;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--paper);
+    opacity:0.5;
+  }
+
+  /* ═══════════════════ CORNER MARKS ═══════════════════ */
+  .corner {
+    position:absolute;
+    width:18px; height:18px;
+    border:1px solid var(--rule);
+    pointer-events:none;
+    z-index:5;
+  }
+  .corner.tl { top:24px; left:24px; border-right:none; border-bottom:none; }
+  .corner.bl { bottom:24px; left:24px; border-right:none; border-top:none; }
+
+  /* ═══════════════════ RESPONSIVE ═══════════════════ */
+  @media (max-width: 880px) {
+    html, body { overflow-y:auto; height:auto; }
+    .page { grid-template-columns:1fr; height:auto; min-height:100vh; }
+    .left { padding:32px 28px; min-height:100vh; }
+    .right {
+      min-height:30vh;
+      order:-1;
+    }
+    .right::before { top:60%; }
+    .corner { display:none; }
+    .image-caption { display:none; }
+    .foot {
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Corner registration marks on the left panel -->
+<div class="corner tl"></div>
+<div class="corner bl"></div>
+
+<div class="page">
+
+  <!-- ═══════════════════ LEFT PANEL ═══════════════════ -->
+  <div class="left">
+
+    <!-- Top -->
+    <div class="top">
+      
+      <span>Toronto · Canada</span>
+    </div>
+
+    <!-- Centre — wordmark + promise -->
+    <div class="middle">
+      <div class="wordmark">
+        <svg viewBox="0 0 360 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wordmark -->
+          <text x="0" y="80"
+                font-family="Cormorant Garamond, serif"
+                font-weight="400"
+                font-size="92"
+                fill="#F2EEE5"
+                letter-spacing="4">Advara</text>
+          <!-- Hairline rule sized to the word, ending with the dot just past it -->
+          <line x1="2" y1="96" x2="305" y2="96"
+                stroke="#F2EEE5" stroke-width="0.8" opacity="0.55"/>
+          <circle cx="311" cy="96" r="1.8" fill="#F2EEE5" opacity="0.78"/>
+          <!-- Descriptor -->
+          <text x="2" y="120"
+                font-family="Inter, sans-serif"
+                font-weight="300"
+                font-size="12"
+                letter-spacing="5"
+                fill="#F2EEE5"
+                opacity="0.72">HOLDINGS</text>
+        </svg>
+      </div>
+
+    </div>
+
+    <!-- Foot -->
+    <div class="foot">
+
+      <div class="foot-block">
+        <div class="label">Practice</div>
+        <div class="desc">
+          Advara Holdings offers consulting, transaction advisory and capital solutions for a wide range of global clients focused on creating economic opportunity for workers and communities. Launching in Summer 2026, with more information to come.
+        </div>
+      </div>
+
+      <div class="foot-block">
+        <div class="label">Enquiries</div>
+        <div class="email">
+          <a href="mailto:taylor@advara.ca">taylor@advara.ca</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════ RIGHT PANEL (image) ═══════════════════ -->
+  <div class="right">
+    <div class="grain"></div>
+    <div class="image-caption">Long horizon · No. 01</div>
+  </div>
+
+</div>
+
+</body>
+</html>
