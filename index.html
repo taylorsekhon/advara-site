@@ -95,7 +95,7 @@
   /* Bottom — footer rail */
   .foot {
     display:grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1fr;
     gap:48px;
     align-items:end;
     padding-top:32px;
@@ -198,22 +198,6 @@
     pointer-events:none;
   }
 
-  /* Vertical caption rotated on the right edge of the image — premium editorial touch */
-  .image-caption {
-    position:absolute;
-    bottom:48px;
-    right:24px;
-    writing-mode:vertical-rl;
-    transform:rotate(180deg);
-    font-family:'Inter', sans-serif;
-    font-weight:300;
-    font-size:9px;
-    letter-spacing:0.42em;
-    text-transform:uppercase;
-    color:var(--paper);
-    opacity:0.5;
-  }
-
   /* ═══════════════════ CORNER MARKS ═══════════════════ */
   .corner {
     position:absolute;
@@ -236,7 +220,6 @@
     }
     .right::before { top:60%; }
     .corner { display:none; }
-    .image-caption { display:none; }
     .foot {
       grid-template-columns:1fr;
       gap:24px;
@@ -295,7 +278,7 @@
       <div class="foot-block">
         <div class="label">Practice</div>
         <div class="desc">
-          Advara Holdings offers consulting, transaction advisory and capital solutions for a wide range of global clients focused on creating economic opportunity for workers and communities. Launching in Summer 2026, with more information to come.
+          Advara Holdings provides consulting, transaction advisory and capital solutions for a wide range of global clients focused on creating economic opportunity for workers and communities. Launching in Summer 2026, with more information to come.
         </div>
       </div>
 
@@ -313,7 +296,6 @@
   <!-- ═══════════════════ RIGHT PANEL (image) ═══════════════════ -->
   <div class="right">
     <div class="grain"></div>
-    <div class="image-caption">Long horizon · No. 01</div>
   </div>
 
 </div>
