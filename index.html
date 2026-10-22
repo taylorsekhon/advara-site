@@ -57,11 +57,15 @@
 
   .intro { display: flex; flex-direction: column; gap: 28px; max-width: 680px; }
   .bar { width: 56px; height: 5px; background: var(--gold); }
-  .statement {
+  .message { display: flex; flex-direction: column; gap: 20px; }
+  .headline {
+    margin: 0;
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(22px, 2.1vw, 30px); line-height: 1.35;
-    letter-spacing: -0.005em; color: var(--green);
+    font-size: clamp(32px, 3.6vw, 52px); line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--green);
+    text-wrap: balance;
   }
+  .lede { max-width: 580px; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; text-wrap: pretty; }
   .soon {
     font-weight: 500; font-size: 13px; line-height: 1.5;
     letter-spacing: 0.16em; text-transform: uppercase; color: var(--green);
@@ -103,7 +107,10 @@
 
     <div class="intro">
       <div class="bar" aria-hidden="true"></div>
-      <p class="statement">Advara Holdings Inc. (“Advara”) advises on and invests in shared ownership transactions. Advara brings deep experience across private equity and employee ownership at leading institutions to create sophisticated solutions for the most complex or competitive situations.</p>
+      <div class="message">
+        <h1 class="headline">Advara advises on and invests in shared ownership transactions.</h1>
+        <p class="lede">Advara Holdings Inc. (“Advara”) brings deep experience across private equity and employee ownership at leading institutions to create sophisticated solutions for the most complex or competitive situations.</p>
+      </div>
       <p class="soon">Website launching soon.</p>
       <p class="enquiries">Enquiries: <a href="mailto:info@advara.ca">info@advara.ca</a></p>
     </div>
